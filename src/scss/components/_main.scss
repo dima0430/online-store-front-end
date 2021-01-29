@@ -1,0 +1,49 @@
+.main{
+    display: flex;
+}
+.catalog-list{
+    width: 200px;
+    border:1px solid black;
+    border-top: none;
+    border-radius: 0 0 5px 5px;
+    padding: 5px 0;
+}
+.catalog-item{
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &:nth-child(n):not(:first-child){
+        margin-top: 5px;
+        
+    }
+    &:hover{
+        font-weight: bold;
+        box-shadow: 0 0 5px rgba(0,0,0,0.5)
+    
+    }
+
+    &__icon{
+
+    }
+    &__text{
+
+    }
+    &__arrow{
+        opacity: 0;
+        background-image: url('../../images/catalog-arrow.svg');
+        background-repeat: no-repeat;
+        width: 20px;
+        height: 20px;
+    }
+    &:hover &__arrow{
+        opacity: 1;
+    }
+}
+.categeories-list{
+    display: none;
+    border: 1px solid $black;
+    width: 100%;
+    height: 100px;
+}
