@@ -1,0 +1,25 @@
+// .product
+
+.product{
+    &-image{
+        width:500px ;
+        height:500px;
+        margin-bottom: 40px;
+    }
+    &-block{
+        display: flex;
+        & h4{
+            text-align: center;
+            
+        }
+    }
+}
+.list{
+    background-color: rgba(243, 243, 243, 0.774);
+    margin-bottom: 20px;
+    padding: 10px 0;
+    &__item{
+        font-size: 20px;
+        margin-left: 40px;
+    }
+}

@@ -1,17 +1,19 @@
 import React from 'react'
+import {Slider,NewProducts, PopularProducts} from '..'
 
+import './index.scss'
 
-export default function Main({items}){
-    return(
-        <main className="main">
-            <div className="catalog-list" >
-                {items.map((name,index)=>(
-                <div className="catalog-item">
-                    <div className="catalog-item__icon"/>
-                    <span key={`${name}_${index}`} className='catalog-item__text'>{name}</span>
-                    <div className="catalog-item__arrow" />
-                </div>))}
-            </div>
-        </main>
-    );
+const Main = () => {
+  return (
+    <main>
+      
+      <div className ='wrapper-sliders'>
+        <Slider/>
+        <NewProducts/>
+        <PopularProducts/>
+      </div>
+    </main>
+  )
 }
+
+export default Main

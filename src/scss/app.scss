@@ -10,7 +10,9 @@
 }
 
 .wrapper{
-   width: calc(100vw - 100px);
+   &>:not(:first-child){
+//    width: calc(100vw - 30px);
    margin: 0 auto; 
+
 }
- 
+}

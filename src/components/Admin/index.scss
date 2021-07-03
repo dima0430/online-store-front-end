@@ -1,0 +1,212 @@
+@import "../../scss/_function-mixin";
+@import "../../scss/variables";
+
+//Admin.jsx
+.wrappe{
+    @include disp-flex(space-between);
+    min-height: 100vh;
+}
+.buttons{
+    color: #ffffff;
+    min-width: 15%;
+    background-color: $black;
+    // flex-grow: 1;
+    .title{
+        text-align: center;
+        padding: 10px 0;
+        margin: 10px 0;
+        font-style: italic;
+        color: rgb(54, 56, 55);
+        border-bottom:5px solid rgb(54, 56, 55);
+        border-radius: 50px;  
+    }
+    
+}
+.item{
+    display: block;
+    position: relative;
+    color: #7c7474;
+    cursor: pointer;
+    padding: 15px 10px;
+    text-align: center; 
+    background-color: rgb(27, 26, 26);
+    &:nth-child(n):not(:last-child){
+        margin-bottom: 10px;
+    }
+    &:first-child{
+       margin-top: 30px;
+    }
+    &:hover{
+        text-decoration:none;
+        color: #ffffff;
+    }
+}
+.icon{
+    // margin-left: 10px;
+    width: 25px;
+    height: 25px;
+    padding: 1px;
+    position: absolute;
+    top: 30%;
+    right: 10px;
+    vertical-align: baseline;
+    border-radius: 50%;
+    background-color: black;
+    text-align: center;
+}
+.pages{
+    // flex-grow: 10;
+    width:100% ;
+    padding:30px 100px 0;
+
+}
+
+.add-product{
+    display: flex;
+    flex-direction: column;
+}    
+
+.title{
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.inputs{
+    padding: 5px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    &:focus{
+        outline: 0;
+    }
+    &:not([type=file]){
+        border:1px solid grey; 
+    }
+}
+.label{
+    text-align: left;
+    font-size:20px;
+    font-weight:600 ;
+}
+.button{
+    padding: 5px;
+    border-radius: 10px;
+    border:2px solid grey;
+    background-color: transparent;
+    &:focus{
+        outline: none;
+    }
+}
+.description{
+    @include disp-flex(space-between);
+    &-block{
+        display: flex;
+        flex-direction: column;
+    }
+    &:nth-child(n):not(:last-child){
+        margin-bottom: 10px;
+    }
+}
+.trash{
+    display: flex;
+    align-items: flex-end;
+    cursor: pointer;
+}
+.inputs[type=search]{
+    width: 100%;
+}
+
+table{
+    width:100%;
+    border:2px solid black;
+}
+
+.row_table{
+    width:100% ;
+    display: flex;
+    &:not(:last-child){
+        border-bottom: 1px solid black;
+    }
+    &:first-child{
+        font-weight:bolder ;
+    }
+}
+.column_table{
+
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 10px;
+    &:nth-child(n):not(:last-child){
+        border-right: 1px solid black;
+    }
+    &:last-child{
+        justify-content: space-around;
+    }
+}
+.new-product{
+    cursor: pointer;
+    font-size: 20px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    text-align: right;
+}
+
+.comment{
+//  border:1px solid grey;
+    background-color: rgb(238, 238, 238);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    &-title{
+        font-weight: 600;
+        display: flex;
+        justify-content: space-between;
+    }
+    &-product{
+        font-weight: 600;
+        margin:20px 0 ;
+    }
+    &-answer{
+        margin-top: 20px;
+        margin-bottom: 50px;
+
+        display: flex;
+        justify-content: space-between;
+        border-radius: 10px;
+        &-input{
+            text-align: left;
+            border-radius: 10px;
+            border:1px solid rgb(177, 177, 177);
+            width: 90%;
+            padding:5px;
+        }
+        &-button{
+            color: white;
+            border:1px solid rgb(177, 177, 177);
+            background-color: green;
+            border-radius: 10px;
+            padding: 5px 10px;    
+        }
+    }
+ 
+}
+.order{
+    @include disp-flex(space-between);
+    flex-wrap: wrap;
+    border-top:1px solid grey;
+    padding:10px 0;
+    align-items: center;
+    transition-duration:10s;
+    &:last-child{
+        border-bottom:1px solid grey;
+    }
+    &__arrow{
+        transform: rotateX(180deg);
+        
+    }
+    &-products{
+        flex-basis: 100%;
+    }
+}   

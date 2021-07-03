@@ -1,0 +1,54 @@
+@import "../../scss/_function-mixin";
+@import "../../scss/variables";
+
+.topline{
+    @include disp-flex(space-between);
+    padding:15px 40px;
+    background-color: black;
+    &__link{
+        text-decoration: none;
+        color:$white;
+    }
+    &__logo{
+        color: white;
+        font-size: 20px;
+    }
+} 
+.bottomline{
+    @include disp-flex(space-between,center);
+}
+.liked {   
+    position: relative;
+    cursor: pointer;
+}
+
+.catalog-wrapper{
+    position: relative;
+    min-width: 200px;
+    height: 50px;
+    // border-radius: 5px 5px 0 0;
+    // @include border($black);
+    border-right:1px solid rgb(150, 148, 148);
+}
+.catalog{
+    cursor: pointer;
+    @include disp-flex(center,center);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    border-radius: 5px 5px 0 0;
+    background-color: $white;
+    padding: 5px 0;
+    &__img{
+        @include size(30px ,30px)  
+    }
+    &__text{
+        display: inline;
+        margin-left:10px ;
+        vertical-align: baseline;
+    }
+   
+}

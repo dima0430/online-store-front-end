@@ -1,0 +1,55 @@
+@import "../../scss/_function-mixin";
+@import "../../scss/variables";
+
+.search{
+    &-form{
+        position: relative;
+        @include size(400px,32px);
+        &::before{
+            content:'';
+            background-image:url( './search.png');
+            background-size: 20px 20px;
+            background-repeat: no-repeat;
+            background-position: center;
+            border-radius: 5px 0 0 5px;
+            @include size(28px,28px);
+            position: absolute;
+            left: 1px;
+            top:1px 
+        }
+    }    
+    &-input{
+        @include size( 298px,30px);
+        vertical-align:top ;
+        @include border(black);
+        border-radius: 5px 0 0 5px;
+        padding:0px 30px ;
+        &:focus{
+            outline: none;
+        }   
+        // &::-webkit-search-cancel-button,-webkit-search-results-button,-webkit-search-results-decoration{
+           
+        //     height: 20px;
+        //     width: 20px;
+        //     border-radius:10px;
+        //     background:;
+
+        // }
+    }
+    &-btn{
+        display: inline;
+        min-width:100px ;
+        height:30px;            
+        top:1px;
+        right:1px ;
+        background-color:$black;
+        border: none;
+        border-radius:0 5px 5px 0;
+        color: $white;
+        &:focus{
+            border: none;
+            outline: none;
+        }
+   
+    }
+}
