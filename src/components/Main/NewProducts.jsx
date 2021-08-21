@@ -27,7 +27,7 @@ const NewProducts = () => {
   
     const settings = {
         dots: false,
-        infinite: true,
+        infinite: false,
         speed: 500,
         autoplay: false,
         autoplaySpeed: 2000,
@@ -41,7 +41,7 @@ const NewProducts = () => {
 
 return(
     <div className="container">
-        <h2>Останні новинки</h2>
+        <h2>Новинки</h2>
         <SlickSlider {...settings}>
         {products.map((item,index)=>{
             const {id,name,brand,price,image} = item

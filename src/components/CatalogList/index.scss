@@ -3,18 +3,20 @@
 
 .catalog{
     &-list{
-        display: inline-block;
-        min-width: 200px;
+        display: flex;
+        
+        // min-width: 200px;
         border-top: none;
         padding: 5px 0;
         background-color: white;
-        border-right: 1px solid rgb(150, 148, 148);
-        border-bottom: 1px solid rgb(150, 148, 148);
-        height: 100vw;
+        // height: 100vw;
         transition-duration: 10s; 
         &-absolute{
             display: none;
             transition-duration: 10s; 
+        }
+        &::after{
+
         }
     }
     &-item{
@@ -24,14 +26,14 @@
         padding: 10px 0;
         font-size: 15px;
         &:not(:first-child){
-            margin-top: 10px;
+            margin-left: 10px;
             
         }
-        &:hover{
-            font-weight: bold;
-            box-shadow: 0 0 5px rgba(0,0,0,0.5)
+        // &:hover{
+        //     font-weight: bold;
+        //     box-shadow: 0 0 5px rgba(0,0,0,0.5)
         
-        }
+        // }
     // &__arrow{
     //         opacity: 0;
     //         background-image: url('../../scss/images/catalog-arrow.svg');

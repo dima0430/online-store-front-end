@@ -1,25 +1,29 @@
 import React,{useState} from 'react'
 import { useSelector } from 'react-redux'
+import {  useHistory } from 'react-router-dom'
 import {Authorization,Registration,UserSvg} from '..'
+
 import "./index.scss"
 
-
 function UserForm(){
-    const client =useSelector(state => state.logIn)     
-    const [activeForm, setActiveForm] = useState(true)
+    const history=useHistory();
+    const {firstname,lastname,login} =useSelector(({logIn}) =>logIn)     
     const [visible, setVisible] = useState(false)
+    const [activeForm, setActiveForm] = useState(true)
     const onActiveForm=(active)=>{
         setActiveForm(active);
-        
+    }
+    const onClickUser= ()=>{
+        login? history.push('/profile') :setVisible(!visible)
     }
 
     return(    
     <>  
-        <div onClick={()=>setVisible(!visible)}  className="user__title">   
+        <div onClick={onClickUser}  className="user__title">   
             <UserSvg/>
-            {client.login?<span>{client.firstname} {client.lastname}</span> :<span>Реєстрація | Вхід</span>}
+            {login?<span>{firstname} {lastname}</span> :<span>Реєстрація | Вхід</span>}
         </div>
-    {(visible && !client.login)&&    
+    {(visible && !login ) &&   
         <div className='wrapper-form'>
             <div className='form'>
                 <div className="form__title">
@@ -30,12 +34,10 @@ function UserForm(){
                         Реєстрація
                     </button>
                 </div>
-                {activeForm ? <Authorization/>:<Registration/>}   
+                {activeForm ? <Authorization visible={()=>setVisible(false)} />:<Registration/>}   
             </div>
-        </div>
-    }       
-    </>
-        
+        </div>}    
+    </>  
     );
 }
 

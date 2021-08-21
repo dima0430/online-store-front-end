@@ -2,7 +2,7 @@
 @import "../../scss/variables";
 
 main{
-  @include disp-flex(space-between)
+  margin: 0 auto;
 }
 .wrapper-sliders{
   display: flex;
@@ -12,8 +12,7 @@ main{
 .container {
   padding-top: 40px;
   padding-bottom: 40px;
-  padding-left: 50px;
-  padding-right: 50px;
+  max-width: 1250px;
   display: inline-block;
   & div>img{
       width: 300px;

@@ -3,11 +3,15 @@ const initialState = {
 	totalPrice: 0,
 	totalCount: 0,
 	};
-	const count=(newItem)=>Object.values(newItem).reduce((sum,obj)=>obj.count+sum,0)
-	const price=(newItem) =>Object.values(newItem).reduce((sum,obj)=>obj.count*obj.price+sum,0)	
+
+
+const count=(newItem)=>Object.values(newItem).reduce((sum,obj)=>obj.count+sum,0)
+const price=(newItem) =>Object.values(newItem).reduce((sum,obj)=>obj.count*obj.price+sum,0)	
+
 export const cartReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case 'ADD_PIZZA_CART': 
+		case 'ADD_PRODUCT_CART': 
+		
 		const addItem={...state.items,[action.payload.id]: !state.items[action.payload.id] ?{...action.payload ,count:1} : {...state.items[action.payload.id],count:state.items[action.payload.id].count+1}};
 		  
 		return{
@@ -17,7 +21,7 @@ export const cartReducer = (state = initialState, action) => {
 			totalPrice:price(addItem)
 		}
 		
-		case 'DASH_PIZZA_CART': 
+		case 'DASH_PRODUCT_CART': 
 		const dashItem={...state.items,[action.payload.id]: !state.items[action.payload.id]||state.items[action.payload.id].count<=1 ?{...action.payload ,count:1} : {...state.items[action.payload.id],count:state.items[action.payload.id].count-1}};
 		 
 		return{
@@ -26,14 +30,16 @@ export const cartReducer = (state = initialState, action) => {
 			totalCount:count(dashItem),
 			totalPrice:price(dashItem)
 		}
-		case 'REMOVE_PIZZA_CART': 
+		case 'REMOVE_PRODUCT_CART': 
+		
 		const {[action.payload.id]:value, ...after}=state.items
-		const removeItem={...after}
+		
+		const newArr={...after}
 		return{
 		...state,
-			items:removeItem,
-			totalCount:count(removeItem),
-			totalPrice:price(removeItem)
+			items:newArr,
+			totalCount:count(newArr),
+			totalPrice:price(newArr)
 		}
 		
 		default: return state}}

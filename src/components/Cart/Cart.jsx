@@ -2,7 +2,7 @@ import axios from 'axios'
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { BasketSvg,DashSvg,PlusSvg,DeleteSvg} from '..'
-import { addPizzaToCart, dashPizzaToCart, removePizzaToCart} from '../../redux/action'
+import { addProductToCart, dashProductToCart, removeProductToCart} from '../../redux/actions/cart'
 import './index.scss'
 
 const Cart = () => {
@@ -13,6 +13,15 @@ const Cart = () => {
 
     const onVisible=()=>{
         setVisible(!visible)
+    }
+    const handleAddProductToCart=(obj)=>{
+        dispatch(addProductToCart(obj))
+    }
+    const handleDashProductToCart=(obj)=>{
+        dispatch(dashProductToCart(obj))
+    }
+    const handleRemoveProductToCart=(obj)=>{
+        dispatch(removeProductToCart(obj))
     }
     // visible ? document.body.style.overflow = "hidden":document.body.style.overflow = "auto"
     
@@ -51,18 +60,18 @@ const Cart = () => {
                                         <span>  {item.name.split(' ')[0]} {item.brand} {item.name.split(' ')[1]} </span>
                                     </td>
                                     <td> 
-                                        <span className='cart-buttons' onClick={()=>dispatch(dashPizzaToCart(item))}>
+                                        <span className='cart-buttons' onClick={()=>handleDashProductToCart(item)}>
                                             <DashSvg/>
                                         </span>  
                                         <span className='cart__count'>{item.count}</span>  
-                                        <span onClick={()=>{dispatch(addPizzaToCart(item))}}>
+                                        <span onClick={()=>handleAddProductToCart(item)}>
                                              <PlusSvg/>
                                         </span>
                                     </td>
                                     <td>{item.price}</td>
                                     <td>{item.price*item.count}</td>
                                     <td>
-                                    <span onClick={()=>dispatch(removePizzaToCart(item))}>
+                                    <span onClick={()=>handleRemoveProductToCart(item)}>
                                         <DeleteSvg/>
                                     </span>
                                     </td>

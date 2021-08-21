@@ -1,4 +1,4 @@
-const client={
+const initialState={
     id:null,
     firstname:'',
     lastname:'',
@@ -6,7 +6,7 @@ const client={
     email:'',
     login:false
 }
-export const logInReducer =(state=client,action)=>{
+export const logInReducer =(state=initialState,action)=>{
     switch(action.type){
         case 'LOG_IN':
             return {
@@ -17,6 +17,16 @@ export const logInReducer =(state=client,action)=>{
                 phone:action.phone,
                 email:action.email,
                 login:action.login
+            }   
+        case 'LOG_OUT':
+            return {
+                ...state,
+                id:'',
+                firstname:'',
+                lastname:'',
+                phone:'',
+                email:'',
+                login:false
             }   
         default:return state;
     }

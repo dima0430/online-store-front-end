@@ -1,12 +1,13 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { Product } from '..'
+import './index.scss'
 
 const CategoryProduct = () => {
     const {categoryProducts} = useSelector(({products}) =>products)
     
     return (
-        <div>
+        <div className='wrapper-category-products'>
         {categoryProducts && categoryProducts.map(item=>{ 
         const {id,name,brand,price,image} = item
             return(

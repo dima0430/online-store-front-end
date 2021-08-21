@@ -11,7 +11,8 @@ export { default as Slider } from './Main/Slider'
 export { default as NewProducts } from './Main/NewProducts'
 export { default as PopularProducts } from './Main/PopularProducts'
 
-export {LikeSvg,BasketSvg,UserSvg,TrashSvg,PenSvg,AddSvg,PlusSvg,DashSvg,DeleteSvg,ArrowSvg} from './SVGComponents/SVG'
+export {LikeSvg,BasketSvg,UserSvg,TrashSvg,PenSvg,AddSvg,PlusSvg,DashSvg,DeleteSvg,
+ArrowSvg,UserCircleSvg,ShopSvg,CommentSvg,ExitSvg} from './SVGComponents/SVG'
 
 export { default as CatalogList } from './CatalogList/CatalogList'
 
@@ -30,5 +31,9 @@ export { default as Cart } from './Cart/Cart'
 export { default as Product } from './Product/Product'
 
 export { default as ProductPage } from './ProductPage/ProductPage'
+export { default as ProductInfo } from './ProductPage/ProductInfo'
+export { default as ProductComments } from './ProductPage/ProductComments'
 
 export { default as CategoryProduct } from './CategoryProduct/CategoryProduct'
+
+export { default as UserProfileMain } from './UserProfile/UserProfileMain'

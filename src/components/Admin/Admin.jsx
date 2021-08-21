@@ -1,13 +1,20 @@
 import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, Route, Switch, useHistory } from 'react-router'
 import { Link } from 'react-router-dom'
 import { AddProduct, Comments, EditProduct, Products, Orders} from '..'
+import { getOrdersAdmin } from '../../redux/actions/orders'
 import './index.scss'
 
 const Admin = () => {
+    const{ ordersAdminCount }  = useSelector(({orders}) => orders)
     const history =useHistory();
+    const dispatch= useDispatch()
     useEffect(() => {
         history.push('/admin/products')
+        setTimeout(() => {
+            dispatch(getOrdersAdmin())
+        }, 2000); 
     }, [])
     return (
         <>
@@ -17,7 +24,7 @@ const Admin = () => {
                 <h3 className="title">Admin</h3>
                 <Link to='/admin/products' className="item">Товари</Link>
                 <Link to='/admin/comments' className="item">Відгуки<span className='icon'>4</span></Link>
-                <Link to='/admin/orders'className="item">Замовлення<span className='icon'>3</span></Link>
+                <Link to='/admin/orders'className="item"><span>Замовлення</span>{ordersAdminCount && (<span className='icon'>{ordersAdminCount}</span>)}</Link>
             </div>
             <div className='pages'>    
                 <Switch>

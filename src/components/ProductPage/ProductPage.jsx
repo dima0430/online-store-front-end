@@ -1,34 +1,34 @@
+import React from 'react'
 import { useSelector } from 'react-redux'
+import {ProductComments,ProductInfo} from '..'
+import {Switch,Route,Link,useRouteMatch, useLocation} from "react-router-dom";
 
 import './index.scss'
 
 const ProductPage = ({params}) => {
-
+    let { path, url } = useRouteMatch();
+    let { pathname  }=useLocation();
+    const [activeItem, setActiveItem] = React.useState(pathname.includes('comments'))
+    const onActiveItem=(active)=>{
+        setActiveItem(active);
+    }
     const product = useSelector(state => state.products.productsList).filter(obj => obj.id ===params.id)[0]
-    // const description =JSON.parse(product.description);
-      
     return (
-        <div>{product &&
-            
-            <div>
+        <>
+        {product &&
+            <div className='product-page-wrapper'>
                 <h1>{product.name.split(' ')[0]} {product.brand} {product.name.split(' ')[1]}</h1>
-            <div className='product-block'>
-                <div>
-                    <img className="product-image" src={`http://localhost:8888/back/uploads/${product.image}`} alt=""/>
-                    <h4>Характеристики</h4>
-                </div>    
-                <div className='product-info'>
-                    {/* {
-                       JSON.parse(product.description).map(product=>{
-                            return(
-                             <div>{product.name}:{product.value}</div>   
-                            )
-                        })
-                    } */}
-                </div>
-            </div>
+                    <ul>
+                        <Link className={!activeItem?'active-item':''} to={url} onClick={()=>onActiveItem(false)}>Про товар</Link>
+                        <Link className={activeItem?'active-item':''} to ={`${url}/comments`} onClick={()=>onActiveItem(true)}>Відгуки</Link>
+                    </ul>
+                    <Switch>
+                        <Route exact path ={path} render={()=>(<ProductInfo productId={params.id}/>)}/>
+                        <Route path ={`${path}/comments`} render ={()=><ProductComments productId={params.id}/>}/>
+                    </Switch>
             </div>}
-        </div>)
+        </>
+        )
 }
 
 export default ProductPage

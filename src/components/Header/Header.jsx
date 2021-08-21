@@ -1,13 +1,15 @@
 import React from 'react'
-import { HeaderTopLine,HeaderBottomLine} from '..'
+import { HeaderTopLine,HeaderBottomLine,CatalogList} from '..'
 import './index.scss'
 
 const Header = () => {
     return (
-    <div className="wrapper">
+    <header className="header-wrapper">
             <HeaderTopLine/>
             <HeaderBottomLine/>
-    </div>
+            <CatalogList/>
+            
+    </header>
     )
 }
 

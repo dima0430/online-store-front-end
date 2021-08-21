@@ -1,10 +1,10 @@
 import React,{useState} from 'react'
 import Cookie from 'js-cookie'
 import {useDispatch} from 'react-redux'
-import { logIn } from '../../redux/action'
+import { logIn } from '../../redux/actions/logInOut'
 import { authorization } from '../../api/API'
 
-function Authorization() {
+function Authorization({visible}) {
     const dispatch = useDispatch()
     const [auth, setAuth] = useState({email:'',password:''})
     const onChangeInputs=(e)=>{
@@ -15,6 +15,7 @@ function Authorization() {
         await authorization(auth)
         .then(response=>{Cookie.set('jwt',response.jwt); return response})
         .then(response=>dispatch(logIn(JSON.stringify({'jwt': response.jwt}))))
+        .then(()=>visible())
     }
     return (
         <form onSubmit={onSubmit} className="authorization">    
