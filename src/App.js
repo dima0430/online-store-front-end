@@ -3,10 +3,11 @@ import React,{useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route,Switch,} from 'react-router';
 import {useLocation, useParams} from 'react-router-dom';
-import { CategoryProduct, Main,Header,ProductPage,UserProfileMain} from "./components"
+import { CategoryProduct, Main,Header,ProductPage,UserProfileMain,LikedProducts} from "./components"
 import {logIn} from './redux/actions/logInOut';
 import {getCategories} from './redux/actions/categories';
-import { getProducts} from './redux/actions/products';
+import { getLikedProducts, getProducts} from './redux/actions/products';
+
 
 
 function App() {
@@ -18,8 +19,11 @@ function App() {
 	useEffect(
 		() => {
 		dispatch(logIn(JSON.stringify({'jwt':Cookies.get('jwt')})))
+		.then(response=>response?dispatch(getLikedProducts(response.id)):false)
+		.then(()=>dispatch(getProducts()))
 		dispatch(getCategories())
-		dispatch(getProducts())
+		
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	},[])
 	return(
 		<>
@@ -29,7 +33,9 @@ function App() {
 		{/* <Route> */}
 		<Switch>
 				<Route exact path='/'component={Main}/>
-				{login && <Route path='/profile' component={UserProfileMain}/>}
+				{login &&	
+					<Route path='/profile' component={UserProfileMain}/>
+				}
 				<Route path='/:category/:id' render={({match})=>(<ProductPage id={id} {...match} />)}/>
 				<Route exact path='/:category' render={()=><CategoryProduct/>}/>
 				{/* <Redirect to='/404'/> */}

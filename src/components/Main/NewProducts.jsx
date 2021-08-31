@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import SlickSlider from "react-slick";
 import { Product } from '..';
 
-function SampleNextArrow(props) {
+const SampleNextArrow=(props)=>{
 	const { onClick } = props;
   	return (
     	<div
@@ -13,13 +13,13 @@ function SampleNextArrow(props) {
   	);
 }
 
-function SamplePrevArrow(props) {
+const SamplePrevArrow=(props)=>{
   	const { onClick } = props;
   	return (
-    		<div
-      	className='prev'
-      	onClick={onClick}
-    		/>
+    	<div
+      	    className='prev'
+      	    onClick={onClick}
+    	/>
   	);
 }
 
@@ -36,20 +36,18 @@ const NewProducts = () => {
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
     };
-    const products = useSelector(state => state.products.productsList)
-        
+    const {productsList} = useSelector(({products}) => products)
 
-return(
-    <div className="container">
-        <h2>Новинки</h2>
-        <SlickSlider {...settings}>
-        {products.map((item,index)=>{
-            const {id,name,brand,price,image} = item
-            return(
-                <Product cart={item} onClickn={id} key={id} name={name} brand={brand} price={price} image={image}/>
-        )})}    
-        </SlickSlider>
-    </div>
+    return(
+        <div className="container">
+            <h2>Новинки</h2>
+            <SlickSlider {...settings}>
+            {productsList.map( item =>{
+                return(
+                    <Product item={item} key={item.id} />
+            )})}    
+            </SlickSlider>
+        </div>
 )
 }
 export default NewProducts;

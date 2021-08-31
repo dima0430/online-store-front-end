@@ -70,18 +70,10 @@
             border-bottom:2px solid rgba(0, 0, 0,0.3) ;
             transition-duration: 1s;
             background-color: transparent;
+            &:focus-visible{
+                outline: none;
+            }
             
-        }
-        &::after{
-            position: absolute;
-            @include size(20px,20px);
-            right: 5px;
-        }
-    }
-    &__forgot{
-        cursor: pointer;
-        &:hover{
-            text-decoration:underline;
         }
     }
     &__button{
@@ -105,16 +97,10 @@
 }
 
 //Autorization.jsx
-.input{
-    &-login::after{
-        content: '';
-        background: url("./user.svg");
-        background-size: 20px 20px;
-    }
-    &-password::after{
-        content: '';
-        background: url("./lock.svg");
-        background-size: 20px 20px;
-    }
+.authorization svg{ 
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 

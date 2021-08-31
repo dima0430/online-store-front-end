@@ -9,19 +9,20 @@ const initialState={
 export const logInReducer =(state=initialState,action)=>{
     switch(action.type){
         case 'LOG_IN':
+            const newUser={
+            id:action.id,
+            firstname:action.firstname,
+            lastname:action.lastname,
+            phone:action.phone,
+            email:action.email,
+            login:action.login}
             return {
-                ...state,
-                id:action.id,
-                firstname:action.firstname,
-                lastname:action.lastname,
-                phone:action.phone,
-                email:action.email,
-                login:action.login
+                ...state,...newUser
             }   
         case 'LOG_OUT':
             return {
                 ...state,
-                id:'',
+                id:null,
                 firstname:'',
                 lastname:'',
                 phone:'',

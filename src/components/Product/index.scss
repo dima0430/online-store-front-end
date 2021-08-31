@@ -24,11 +24,11 @@
 	&-img {
 		padding: 20px 0;
 		transition: 1s ease-in-out;
-		text-align: center;
 		& .image {
 			display: block;
 			width: 200px;
 			height: 200px;
+			margin: 0 auto;
 		}
 	}
 	&-list {

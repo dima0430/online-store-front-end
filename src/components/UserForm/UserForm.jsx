@@ -23,20 +23,21 @@ function UserForm(){
             <UserSvg/>
             {login?<span>{firstname} {lastname}</span> :<span>Реєстрація | Вхід</span>}
         </div>
-    {(visible && !login ) &&   
-        <div className='wrapper-form'>
-            <div className='form'>
-                <div className="form__title">
-                    <button className={`form__title__item ${activeForm?'active':''}`} onClick={()=>onActiveForm(true)}>
-                        Вхід
-                    </button>
-                    <button className={`form__title__item ${!activeForm ?'active':''}`} onClick={()=>onActiveForm(false)}>
-                        Реєстрація
-                    </button>
+        {(visible && !login ) &&   
+            <div className='wrapper-form'>
+                <div className='form'>
+                    <div className="form__title">
+                        <button className={`form__title__item ${activeForm?'active':''}`} onClick={()=>onActiveForm(true)}>
+                            Вхід
+                        </button>
+                        <button className={`form__title__item ${!activeForm ?'active':''}`} onClick={()=>onActiveForm(false)}>
+                            Реєстрація
+                        </button>
+                    </div>
+                    {activeForm ? <Authorization visible={()=>setVisible(false)} />:<Registration/>}   
                 </div>
-                {activeForm ? <Authorization visible={()=>setVisible(false)} />:<Registration/>}   
             </div>
-        </div>}    
+        }    
     </>  
     );
 }

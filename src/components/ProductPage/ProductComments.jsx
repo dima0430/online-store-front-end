@@ -12,6 +12,7 @@ const ProductComments = ({productId}) => {
     const [comment, setComment] = React.useState('')
     React.useEffect(() => {
         dispatch(getComments(productId))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     const onChange=(e)=>{
         setComment(e.target.value)

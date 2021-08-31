@@ -1,11 +1,27 @@
 .user-profile{
     display: flex;
+    justify-content: space-between;
+    &__liked{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 2rem;
+        // flex-wrap: wrap;
+        // justify-content:space-between;
+        padding: 0 20px;
+        & .product-item{
+            transform: scale(1);
+            // margin: 0;
+        }
+    }
     ol{
         list-style-type: none;
+        min-width: 200px;
         padding: 0;
-        & li{
+        & a,li{
             &:not(:last-child){
+                display: block;
                 margin-bottom: 20px;
+                color:black;
             }
             &:first-child{
                 display: inline-block;

@@ -37,11 +37,68 @@ export const getCategoryProducts=(id)=>{
         }
     }
 }
-export const addProductToLiked=(obj)=>({
-    type:'ADD_TO_LIKED',
-    payload:obj
-}) 
-export const removeProductFromLiked=(obj)=>({
-    type:'REMOVE_FROM_LIKED',
-    payload:obj
-}) 
+export const addProductToLiked=(obj,idProduct,idClient)=>
+{
+    return async dispatch =>{
+        const formData = new FormData();
+        formData.append('idProduct',idProduct)
+        formData.append('idClient',idClient)
+        try{
+            const response = await axios.post('http://localhost:8888/back/api/add_product_to_liked.php',formData)
+            const json = await response.data;
+            dispatch
+            ({
+                type:'ADD_TO_LIKED',
+                payload:obj
+            })
+            console.log(json)
+        }
+        catch(error){
+            console.log(error)
+        }
+    }    
+} 
+export const removeProductFromLiked=(obj,idProduct,idClient)=>
+{
+    return async dispatch =>{
+        const formData = new FormData();
+        formData.append('idProduct',idProduct)
+        formData.append('idClient',idClient)
+        try{
+            const response = await axios.post('http://localhost:8888/back/api/remove_product_from_liked.php',formData)
+            const json = await response.data;//поправить
+            dispatch
+            ({
+                type:'REMOVE_FROM_LIKED',
+                payload:obj
+            })
+            console.log(json)
+        }
+        catch(error){
+            console.log(error)
+        }
+    }
+}
+
+export const getLikedProducts=(idClient)=>{
+    return async dispatch =>{
+        const formData = new FormData();
+        formData.append('idClient',idClient)
+        try{
+            const response = await axios.post('http://localhost:8888/back/api/read_liked_products.php',formData)
+            const json = await response.data;
+            dispatch({
+                type:'GET_LIKED_PRODUCTS',
+                payload:json
+            })
+            console.log(json)
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+}
+
+export const clearLiked=()=>({
+    type:'CLEAR_LIKED'
+})

@@ -35,17 +35,16 @@ const PopularProducts = () => {
         nextArrow: <SampleNextArrow />,
         prevArrow: <SamplePrevArrow />
     };
-    const products = useSelector(state => state.products.productsList)
+    const {productsList} = useSelector(({products}) => products)
         
 
 return(
     <div className="container">
         <h2>Найбільш популярні</h2>
         <SlickSlider {...settings}>
-        {products.map(item=>{
-            const {id} = item
+        {productsList.map( item =>{
             return(
-                <Product key={id} {...item}/>
+                <Product key={item.id} item={item}/>
         )})}   
         </SlickSlider>
     </div>
